@@ -1,11 +1,11 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
-  background-color: #FFCC99;
+  font-family: 'Microsoft Yahei';
+  background-color: #FF9999;
 }
 h1 {
-  color: #FFFFCC;
+  color: #FFF;
   text-align: center;
-  line-height: 1366px;
+  line-height: 300px;
 }
