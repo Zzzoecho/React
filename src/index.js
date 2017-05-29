@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
-import Welcome from './Welcome'
+// import Welcome from './Welcome'
 
 ReactDOM.render(
-  <h1>Hello, world!</h1>,
-  document.getElementById('root2')
+  <App/>,
+  document.getElementById('root')
 );
 
-ReactDOM.render(
-  <Welcome/>,
-  document.getElementById('root')
-)
+// ReactDOM.render(
+//   <Welcome/>,
+//   document.getElementById('root')
+// )
