@@ -1,6 +1,10 @@
 body {
-  background-color: #ff5353;
+  background-image: url('http://img.hb.aicdn.com/4de851c584738a62167fd173c1485668c9454ce91093e-KOmTGv_fw658');
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  background-size: cover;
 }
+
 #root {
   display: flex;
   justify-content: center;

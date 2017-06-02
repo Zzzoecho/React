@@ -1,18 +1,23 @@
 .App {
-  color: #333;
-  border: 1px solid #aaa;
+  font-family: 'Microsoft Yahei';
+  color: #666;
+  border: 1px solid #f3f3f2;
   border-radius: 4px;
-  background: white;
+  background: #f3f3f2;
   margin: 2em;
   padding: 0 1em;
   min-height: 20em;
   min-width: 32em;
-  box-shadow: 0 0 1em hsla(0,0%,0%,0.15);
+  box-shadow: 0 0 2em hsla(0,0%,0%,0.15);
+  opacity: 0.95;
 }
 .App > .todoList> li:nth-child(odd){
-  background: #eee;
+  background: #d4dcda;
 }
 .App > .todoList> li:nth-child(even){
   background: transparent; 
+}
+.App > .todoList > li {
+  border-radius: 4px;
 }
 

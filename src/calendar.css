@@ -1,0 +1,91 @@
+.calendar {
+    position: relative;
+    top: 100px;
+    left: 300px;
+    padding-bottom: 20px;
+    width: 320px;
+    font-size: 16px;
+    font-family: Arial, Calibri, 'Times New Roman';
+    color: #625164;
+    background: #F0F8FF;
+    box-shadow: 0 5px 20px 5px rgba(221, 221, 221, 0.4);
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.cur {
+    margin: 10px 0;
+    height: 20px;
+    font-weight: 100;
+    letter-spacing: 2.5px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.header::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.header .btn {
+    margin-top: 6px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.header .pre {
+    float: left;
+    margin-left: 10px;
+}
+
+.header .next {
+    float: right;
+    margin-right: 10px;
+}
+
+.panel {
+    width: 100%;
+    text-align: center;
+    background-color: #F0F8FF;
+}
+
+.panel thead tr th {
+    font-weight: 100;
+}
+
+.panel thead th:first-child,
+.panel thead th:last-child {
+    color: #ff6565;
+}
+
+.panel th {
+    line-height: 2.5;
+}
+
+.panel td {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+}
+
+.panel tbody .cur-month:hover {
+    background-color: #ff6565;
+    border-radius: 50%;
+    color: #fff;
+}
+
+.panel tbody .cur-month {
+    cursor: pointer;
+}
+
+.panel tbody .pre-month,
+.panel tbody .next-month {
+    color: #ccc;
+}
+
+.panel tbody .cur-date {
+    color: #ff6565;
+}
