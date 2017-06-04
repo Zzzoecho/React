@@ -9,30 +9,101 @@
     align-items: center;
 }
 .UserDialog {
-    border-radius: 4px;
-    min-width: 20em;
-    background: #fff;
+    font-family: Calibri, 'Times New Roman';
+}
+.UserDialog > nav {
+    position: fixed;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    display: -webkit-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #ccc;
+    background-color: rgba(0,0,0,0.7);
+    min-height: 300px;
+    min-width: 700px;
     border: 1px solid #aaa;
+    border-radius: 4px;
+    box-shadow: 0 0 1em hsla(0,0%,0%,0.35);
+    margin: 0 auto;
+}
+.UserDialog .dialog {
+    min-width: 300px;
+}
+.UserDialog  .dialog p {
+    display: block;
+    margin: 10px;
+    margin-bottom: 40px;
+    font-size: 26px;
+    font-weight: 100;
+    max-width: 250px;
+}
+.UserDialog input[type='radio'] {
+    -webkit-appearance: none;
+}
+.UserDialog > nav .dialog label {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px 30px;
+    margin: 10px;
+    cursor: pointer;
+    margin-left: 2em;
+}
+.UserDialog > nav .up {
+    padding: 1em;
+    margin-right: 40px;
+}
+.UserDialog > nav .in {
+    margin-left: 90px;
+    margin-right: -55px;
+}
+.UserDialog .panes {
+    position: absolute;
+    top: -25px;
+    left: 35px;
+    min-height: 350px;
+    min-width: 350px;
+    background: #fff;
+    padding: 0 1em 1em;
     box-shadow: 0 0 1em hsla(0,0%,0%,0.35);
 }
-.UserDialog > nav:first-child {
-    padding: 1em;
-    margin-left: -2em;
+.UserDialog form p {
+    margin: 25px 18px;
+    color: #ff6565;
+    font-size: 26px;
+    font-weight: 100;
+    max-width: 250px;
 }
-.UserDialog > nav:first-child label {
-    margin-left: 2em;
-    cursor: pointer;
-}
-.UserDialog > .panes {
-    padding: 0 1em 1em;
+.UserDialog form > .row button {
+    position: relative;
+    left: 175px;
+    background: #ff6565;
+    color: #fff;
+    margin-top: 10px; 
+    padding: 8px 30px;
+    border: none; 
+    border-radius: 4px;
 }
 .UserDialog form > .row {
     display: flex;
-    padding: .3em 0;
+    padding: .5em 0;
 }
-.UserDialog form > .row > label:first-child {
-    width: 4em;
+.UserDialog form > .row input {
+    min-width: 285px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    padding: 5px;
+    outline: none;
 }
-.UserDialog form > .row.actions {
-    padding-left: 4em;
+
+::-webkit-input-placeholder {
+    color: #ccc;
+}
+.UserDialog form > .row > label {
+    position: relative;
+    left: 280px;
+    line-height: 40px;
+    color: #ccc;
 }

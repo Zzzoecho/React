@@ -6,7 +6,7 @@ import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import UserDialog from './UserDialog'
 import {getCurrentUser, signOut} from './leanCloud'
-import AV from './leanCloud'
+// import AV from './leanCloud'
 
 class App extends Component {
   constructor(props){
@@ -51,21 +51,21 @@ class App extends Component {
       </div>
     )
   }
-  loadList(){
-    var Todo = AV.Object.extend('Todo');
-    var TodoFolder = AV.Object.extend('TodoFolder');
-    var todoFolder = new TodoFolder()
-    let data = JSON.stringify(this.state.todoList)
-    console.log(data)
-    todoFolder.set('content',data)
-    todoFolder.save().then(function (todo){
-      let stateCopy = JSON.parse(JSON.stringify(this.state))
-      stateCopy.todoList.id = todo.id
-      this.setState(stateCopy)
-    }, function (error){
-      console.error(error)
-    })
-  }
+  // loadList(){
+  //   var Todo = AV.Object.extend('Todo');
+  //   var TodoFolder = AV.Object.extend('TodoFolder');
+  //   var todoFolder = new TodoFolder()
+  //   let data = JSON.stringify(this.state.todoList)
+  //   console.log(data)
+  //   todoFolder.set('content',data)
+  //   todoFolder.save().then(function (todo){
+  //     let stateCopy = JSON.parse(JSON.stringify(this.state))
+  //     stateCopy.todoList.id = todo.id
+  //     this.setState(stateCopy)
+  //   }, function (error){
+  //     console.error(error)
+  //   })
+  // }
   signOut(){
     signOut()
     let stateCopy = JSON.parse(JSON.stringify(this.state))
