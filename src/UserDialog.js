@@ -10,9 +10,11 @@ export default class UserDialog extends Component {
             formData: {
                 username: '',
                 password: '',
+                email: ''
             }
         }
     }
+
     switch(e) {
         this.setState({
             selected: e.target.value
@@ -20,9 +22,10 @@ export default class UserDialog extends Component {
     }
     signUp(e){
         e.preventDefault()
-        let {username, password} = this.state.formData
+        let {username, password, email} = this.state.formData
         let success = (user)=>{
             this.props.onSignUp.call(null, user)
+            // console.log('signUp: ' + this.state.user.id)
         }
         let error = (error)=>{
             switch(error.code){
@@ -34,11 +37,13 @@ export default class UserDialog extends Component {
                     break
             }
         }
-        signUp(username, password, success, error)
+        signUp(username, password,email, success, error)
+        
     }
     signIn(e){
          e.preventDefault()
         let {username, password} = this.state.formData
+        // console.log('signIn: ' + this.state.user.id)
         let success = (user)=>{
             this.props.onSignIn.call(null, user)
         }
@@ -53,16 +58,22 @@ export default class UserDialog extends Component {
             }
         }
         signIn(username, password, success, error)
+        
     }
     changeFormData(key, e){
-        let stateCopy = JSON.parse(JSON.stringify(this.saate))  //用JSON深拷贝
+        let stateCopy = JSON.parse(JSON.stringify(this.state))  //用JSON深拷贝
         stateCopy.formData[key] = e.target.value
         this.setState(stateCopy)
     }
 
     render() {
         let signUpForm = (
-            <form aclassName="signUp" onSubmit={this.signUp.bind(this)}> {/*注册*/}
+            <form className="signUp" onSubmit={this.signUp.bind(this)}> {/*注册*/}
+                <div className="row">
+                    <label>邮箱</label>
+                    <input type="text" value={this.state.formData.email}
+                        onChange={this.changeFormData.bind(this, 'email')} />
+                </div>
                 <div className="row">
                     <label>用户名</label>
                     <input type="text" value={this.state.formData.username}
@@ -96,7 +107,7 @@ export default class UserDialog extends Component {
             </form>
         )
         return (
-            <div classNameName="UserDialog-Wrapper">
+            <div className="UserDialog-Wrapper">
                 <div className="UserDialog">
                     <nav>
                         <label>

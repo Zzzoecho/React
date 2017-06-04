@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import 'normalize.css'
+import './reset.css'
 import './App.css';
 import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
-import 'normalize.css'
-import './reset.css'
 import UserDialog from './UserDialog'
 import {getCurrentUser, signOut} from './leanCloud'
+import AV from './leanCloud'
 
 class App extends Component {
   constructor(props){
@@ -16,15 +17,14 @@ class App extends Component {
       todoList: []
     }
   }
-
   render() {
 
     let todos = this.state.todoList
       .filter((item)=> !item.deleted)
       .map((item,index)=>{
-      return (
-        <li key={index}>
-          <TodoItem todo={item} onToggle={this.toggle.bind(this)}
+      return ( 
+        <li key={index} >
+          <TodoItem todo={item} onToggle={this.toggle.bind(this)} 
             onDelete={this.delete.bind(this)}/>
         </li>
       )
@@ -38,19 +38,33 @@ class App extends Component {
         <div className="inputWrapper">
           <TodoInput content={this.state.newTodo} 
             onChange={this.changeTitle.bind(this)}
-            onSubmit={this.addTodo.bind(this)}/>
+            onSubmit={this.addTodo.bind(this)} />
         </div>
         <ol className="todoList">
           {todos}
         </ol>
-        <UserDialog onSignUp={this.onSignUp.bind(this)}/>
         {this.state.user.id ? 
           null : 
           <UserDialog 
-            onSignUp={this.onSignUpOrSignIn.bind(this)}
+            onSignUp={this.onSignUpOrSignIn.bind(this)} 
             onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
       </div>
     )
+  }
+  loadList(){
+    var Todo = AV.Object.extend('Todo');
+    var TodoFolder = AV.Object.extend('TodoFolder');
+    var todoFolder = new TodoFolder()
+    let data = JSON.stringify(this.state.todoList)
+    console.log(data)
+    todoFolder.set('content',data)
+    todoFolder.save().then(function (todo){
+      let stateCopy = JSON.parse(JSON.stringify(this.state))
+      stateCopy.todoList.id = todo.id
+      this.setState(stateCopy)
+    }, function (error){
+      console.error(error)
+    })
   }
   signOut(){
     signOut()
@@ -59,15 +73,15 @@ class App extends Component {
     this.setState(stateCopy)
   }
   onSignUpOrSignIn(user){
-    let stateCopy = JSON.parse(JSON.stringify(this.state))
+    let stateCopy = JSON.parse(JSON.stringify(this.state)) 
     stateCopy.user = user
-    this.setState(this.stateCopy)
+    this.setState(stateCopy)
   }
   componentDidUpdate(){
   }
   toggle(e, todo){
-    todo.status = todo.status === 'completed' ? '': 'completed'
-    this.setState(this.state)
+    todo.status = todo.status === 'completed' ? '' : 'completed'
+    this.setState(this.state) 
   }
   changeTitle(event){
     this.setState({
@@ -89,7 +103,7 @@ class App extends Component {
   }
   delete(event, todo){
     todo.deleted = true
-    this.setState(this.state)
+    this.setState(this.state) 
   }
 }
 
