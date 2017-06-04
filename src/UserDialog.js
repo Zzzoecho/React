@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './UserDialog.css'
 import {signUp, signIn} from './leanCloud'
-// import './iconfont.css'
-// import './iconfont'
+import $ from 'jquery'
 
 export default class UserDialog extends Component {
     constructor(props) {
@@ -60,14 +59,28 @@ export default class UserDialog extends Component {
             }
         }
         signIn(username, password, success, error)
-        
     }
     changeFormData(key, e){
         let stateCopy = JSON.parse(JSON.stringify(this.state))  //用JSON深拷贝
         stateCopy.formData[key] = e.target.value
         this.setState(stateCopy)
     }
-
+    showSignUp(){
+        $('.UserDialog .panes').animate({
+            left: 0,
+        },300)
+        .animate({
+            left:35
+        },200)
+    }
+    showLogin(){
+        $('.UserDialog .panes').animate({
+            left: 340,
+        },300)
+        .animate({
+            left:318
+        },200)
+    }
     render() {
         let signUpForm = (
             <form className="signUp" onSubmit={this.signUp.bind(this)}> {/*注册*/}
@@ -111,7 +124,6 @@ export default class UserDialog extends Component {
             </form>
         )
         return (
-            
             <div className="UserDialog-Wrapper">
                 <link rel="stylesheet" href="https://at.alicdn.com/t/font_5afvq9evjcerk9.css"/>
                 <div className="UserDialog">
@@ -122,6 +134,7 @@ export default class UserDialog extends Component {
                                 <input type="radio" value="signUp" 
                                     checked={this.state.selected === 'signUp'}
                                     onChange={this.switch.bind(this)}
+                                    onClick={this.showSignUp.bind(this)}
                                 /> SIGN UP</label>
                         </div>
                         <div className="dialog in">
@@ -130,6 +143,7 @@ export default class UserDialog extends Component {
                                 <input type="radio" value="signIn" 
                                     checked={this.state.selected === 'signIn'} 
                                     onChange={this.switch.bind(this)}
+                                    onClick={this.showLogin.bind(this)}
                                 /> LOGIN</label>
                         </div>
                         <div className="panes">
@@ -137,10 +151,8 @@ export default class UserDialog extends Component {
                             {this.state.selected === 'signIn' ? signInForm : null}
                         </div>
                     </nav>
-                    
                 </div>
             </div>
-
         )
     }
 }
