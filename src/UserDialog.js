@@ -26,12 +26,24 @@ export default class UserDialog extends Component {
         let {username, password, email} = this.state.formData
         let success = (user)=>{
             this.props.onSignUp.call(null, user)
-            // console.log('signUp: ' + this.state.user.id)
+            $('.App .Todo').show()
         }
         let error = (error)=>{
             switch(error.code){
                 case 202:
                     alert('用户名已被占用')
+                    break
+                case 200:
+                    alert('用户名不能为空')
+                    break
+                case 201:
+                    alert('密码不能为空')
+                    break
+                case 203:
+                    alert('电子邮箱地址已经被占用')
+                    break
+                case 204:
+                    alert('没有提供电子邮箱地址')
                     break
                 default:
                     alert(error)
@@ -47,11 +59,15 @@ export default class UserDialog extends Component {
         // console.log('signIn: ' + this.state.user.id)
         let success = (user)=>{
             this.props.onSignIn.call(null, user)
+            $('.App .Todo').show()
         }
         let error = (error)=>{
             switch(error.code){
                 case 210:
                     alert('用户名与密码不匹配')
+                    break
+                case 211:
+                    alert('找不到用户')
                     break
                 default:
                     alert(error)
@@ -107,7 +123,7 @@ export default class UserDialog extends Component {
         )
         let signInForm = (
             <form className="signIn" onSubmit={this.signIn.bind(this)} > {/*登录*/}
-                <p>LOGIN</p>
+                <p>LOG IN</p>
                 <div className="row">
                     <label><i className="iconfont icon-login"></i></label>
                     <input type="text" placeholder="User Name" value={this.state.formData.username}
@@ -119,13 +135,13 @@ export default class UserDialog extends Component {
                         onChange={this.changeFormData.bind(this, 'password')} />
                 </div>
                 <div className="row actions">
-                    <button type="submit">登录</button>
+                    <button type="submit">LOG IN</button>
                 </div>
             </form>
         )
         return (
             <div className="UserDialog-Wrapper">
-                <link rel="stylesheet" href="https://at.alicdn.com/t/font_5afvq9evjcerk9.css"/>
+                <link rel="stylesheet" href="https://at.alicdn.com/t/font_k75b3cufccakmx6r.css"/>
                 <div className="UserDialog">
                     <nav>
                         <div className="dialog up">

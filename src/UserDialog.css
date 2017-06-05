@@ -68,14 +68,8 @@
     background: #fff;
     padding: 0 1em 1em;
     box-shadow: 0 0 1em hsla(0,0%,0%,0.35);
-    /*animation-duration: 3s;
-    animation-name: slidein;*/
 }
-/*@keyframes slidein {
-    0% { left: 318px;}
-    50% {left: 150px;}
-    100% { left: 35px; }
-}*/
+
 .UserDialog form p {
     margin: 25px 18px;
     color: #ff6565;
@@ -92,10 +86,15 @@
     padding: 8px 30px;
     border: none; 
     border-radius: 4px;
+    cursor: pointer;
 }
 .UserDialog form > .row {
     display: flex;
     padding: .5em 0;
+}
+.UserDialog form > .row input:focus {
+    border-bottom: 2px solid #ff6565;
+    transition: 300ms;
 }
 .UserDialog form > .row input {
     min-width: 285px;

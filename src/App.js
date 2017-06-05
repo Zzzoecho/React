@@ -6,6 +6,7 @@ import TodoInput from './TodoInput'
 import TodoItem from './TodoItem'
 import UserDialog from './UserDialog'
 import {getCurrentUser, signOut} from './leanCloud'
+import $ from 'jquery'
 // import AV from './leanCloud'
 
 class App extends Component {
@@ -32,22 +33,29 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>{this.state.user.username||'我'}的待办
-          {this.state.user.id ? <button onClick={this.signOut.bind(this)}>登出</button> : null}
-        </h1>
-        <div className="inputWrapper">
-          <TodoInput content={this.state.newTodo} 
-            onChange={this.changeTitle.bind(this)}
-            onSubmit={this.addTodo.bind(this)} />
-        </div>
-        <ol className="todoList">
-          {todos}
-        </ol>
+        <link rel="stylesheet" href="https://at.alicdn.com/t/font_k75b3cufccakmx6r.css"/>
+        {this.state.user.id ? 
+        <div className="Todo">
+          {this.state.user.id ? <button onClick={this.signOut.bind(this)}>Sign Out</button> : null}
+          <p>{this.state.user.username||'我'}的待办
+            
+          </p>
+          <div className="inputWrapper">
+            <TodoInput content={this.state.newTodo} 
+              onChange={this.changeTitle.bind(this)}
+              onSubmit={this.addTodo.bind(this)} />
+          </div>
+          <ol className="todoList">
+            {todos}
+          </ol>
+          <i className="iconfont icon-add" onClick={this.showInput.bind(this)}></i>
+        </div> : null}
         {this.state.user.id ? 
           null : 
           <UserDialog 
             onSignUp={this.onSignUpOrSignIn.bind(this)} 
             onSignIn={this.onSignUpOrSignIn.bind(this)}/>}
+          
       </div>
     )
   }
@@ -68,6 +76,7 @@ class App extends Component {
   // }
   signOut(){
     signOut()
+    $('.App .Todo').hide()
     let stateCopy = JSON.parse(JSON.stringify(this.state))
     stateCopy.user = {}
     this.setState(stateCopy)
@@ -104,6 +113,9 @@ class App extends Component {
   delete(event, todo){
     todo.deleted = true
     this.setState(this.state) 
+  }
+  showInput(){
+    $('.inputWrapper').show()
   }
 }
 

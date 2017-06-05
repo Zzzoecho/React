@@ -8,3 +8,22 @@
     flex-grow: 1;
     padding: 0 .5em;
 }
+.TodoItem .icon-del {
+    cursor: pointer;
+}
+.TodoItem .icon-del:hover {
+    color: #6e7783;
+}
+
+.TodoItem input[type='checkbox']{
+    -webkit-appearance: none; 
+}
+.TodoItem label {
+    display: inline-block;
+    position: relative;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    border: 1px solid #666;
+    cursor: pointer;
+}
