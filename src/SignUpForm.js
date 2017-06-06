@@ -8,17 +8,17 @@ export default class SignUpForm extends Component {
                 <div className="row">
                     <label><i className="iconfont icon-email"></i></label>
                     <input type="text" placeholder="Email" value={this.props.formData.email}
-                        onChange={this.props.onChange.bind(this, 'email')} />
+                        onChange={this.props.onChange.bind(null, 'email')} />
                 </div>
                 <div className="row">
                     <label><i className="iconfont icon-login"></i></label>
                     <input type="text" placeholder="User Name" value={this.props.formData.username}
-                        onChange={this.props.onChange.bind(this, 'username')} />
+                        onChange={this.props.onChange.bind(null, 'username')} />
                 </div>
                 <div className="row">
                     <label><i className="iconfont icon-password"></i></label>
                     <input type="password" placeholder="Password" value={this.props.formData.password}
-                        onChange={this.props.onChange.bind(this, 'password')} />
+                        onChange={this.props.onChange.bind(null, 'password')} />
                 </div>
                 <div className="row actions">
                     <button type="submit">SIGN UP</button>

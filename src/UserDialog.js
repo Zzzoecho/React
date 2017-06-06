@@ -3,6 +3,7 @@ import './UserDialog.css'
 import {signUp, signIn, sendPasswordResetEmail} from './leanCloud'
 import $ from 'jquery'
 import SignUpForm from './SignUpForm'
+import SignInForm from './SignInForm'
 
 
 export default class UserDialog extends Component {
@@ -101,26 +102,7 @@ export default class UserDialog extends Component {
         },200)
     }
     render() {
-        
-        let signInForm = (
-            <form className="signIn" onSubmit={this.signIn.bind(this)} > {/*登录*/}
-                <p>LOG IN</p>
-                <div className="row">
-                    <label><i className="iconfont icon-login"></i></label>
-                    <input type="text" placeholder="User Name" value={this.state.formData.username}
-                        onChange={this.changeFormData.bind(this, 'username')}/>
-                </div>
-                <div className="row">
-                    <label><i className="iconfont icon-password"></i></label>
-                    <input type="password" placeholder="Password" value={this.state.formData.password}
-                        onChange={this.changeFormData.bind(this, 'password')} />
-                </div>
-                <div className="row actions">
-                    <button type="submit">LOG IN</button>
-                    <a href="#" onClick={this.showForgotPassword.bind(this)}>Forgot Password?</a>
-                </div>
-            </form>
-        )
+  
         let signInOrSignUp = (
             <div className="signInOrSignUp">
                 <nav>
@@ -146,9 +128,16 @@ export default class UserDialog extends Component {
                         {this.state.selected === 'signUp' ? 
                             <SignUpForm formData={this.state.formData}
                                 onSubmit={this.signUp.bind(this)}
-                                onChange={this.changeFormData.bind(this)} />
+                                onChange={this.changeFormData.bind(this)} 
+                            />
                             : null}
-                        {this.state.selected === 'signIn' ? signInForm : null}
+                        {this.state.selected === 'signIn' ? 
+                            <SignInForm formData={this.state.formData}
+                                onChange={this.changeFormData.bind(this)}
+                                onSubmit={this.signIn.bind(this)}
+                                onForgotPassword={this.showForgotPassword.bind(this)} 
+                            />
+                            : null}
                     </div>
                 </nav>
             </div>
