@@ -33,7 +33,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <link rel="stylesheet" href="https://at.alicdn.com/t/font_k75b3cufccakmx6r.css"/>
+        <link rel="stylesheet" href="https://at.alicdn.com/t/font_58snzvn4qatqehfr.css"/>
         {this.state.user.id ? 
         <div className="Todo">
           {this.state.user.id ? <button onClick={this.signOut.bind(this)}>Sign Out</button> : null}

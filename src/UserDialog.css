@@ -11,7 +11,7 @@
 .UserDialog {
     font-family: Calibri, 'Times New Roman';
 }
-.UserDialog > nav {
+.UserDialog > .signInOrSignUp > nav {
     position: fixed;
     top: 50%;
     left:50%;
@@ -29,10 +29,10 @@
     box-shadow: 0 0 1em hsla(0,0%,0%,0.35);
     margin: 0 auto;
 }
-.UserDialog .dialog {
+.UserDialog > .signInOrSignUp > nav .dialog {
     min-width: 300px;
 }
-.UserDialog  .dialog p {
+.UserDialog > .signInOrSignUp > nav .dialog p {
     display: block;
     margin: 10px;
     margin-bottom: 40px;
@@ -43,7 +43,7 @@
 .UserDialog input[type='radio'] {
     -webkit-appearance: none;
 }
-.UserDialog > nav .dialog label {
+.UserDialog > .signInOrSignUp > nav .dialog label {
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 8px 30px;
@@ -51,15 +51,15 @@
     cursor: pointer;
     margin-left: 2em;
 }
-.UserDialog > nav .up {
+.UserDialog > .signInOrSignUp > nav .up {
     padding: 1em;
     margin-right: 40px;
 }
-.UserDialog > nav .in {
+.UserDialog > .signInOrSignUp > nav .in {
     margin-left: 90px;
     margin-right: -55px;
 }
-.UserDialog .panes {
+.UserDialog > .signInOrSignUp > nav .panes {
     position: absolute;
     top: -25px;
     left: 35px;
@@ -112,4 +112,70 @@
     left: 280px;
     line-height: 40px;
     color: #ccc;
+}
+.UserDialog form > .row.actions a {
+    display: inline-block;
+    position: absolute;
+    bottom: 80px;
+    right: 45px;
+}
+
+/*
+重置密码表单
+*/
+.UserDialog .forgotPassword {
+    position: relative;
+    min-height: 200px;
+    min-width: 500px;
+    background-color: #fff;
+    border-radius: 10px;
+}
+.UserDialog .forgotPassword > h3 {
+    padding: 1.5em;
+    text-align: center;
+    background-color: #f1f1f1;
+    font-family: 'Microsoft Yahei';
+    border-radius: 10px 10px 0 0;
+}
+.UserDialog .forgotPassword > form {
+    padding: 0 1em 1em;
+}
+.UserDialog .forgotPassword > form .row input {
+    min-width: 280px;
+    margin: 20px auto;
+    margin-left: 110px;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #dcdcdc;
+    border-left: none;
+    background-color: #fff;
+}
+.UserDialog .forgotPassword > form .icon-email2 {
+    padding: 4px;
+    position: absolute;
+    top:20px;
+    right: 167px;
+    border: 1px solid #dcdcdc;
+    border-radius: 5px 0 0 5px;
+    font-size: 30px;
+    background-color: #fff;
+}
+.UserDialog .forgotPassword > form .actions button {
+    position: absolute;
+    bottom: 60px;
+    left: 110px;
+}
+.UserDialog .forgotPassword > form .actions span {
+    position: absolute;
+    bottom: 66px;
+    left: 244px;
+}
+
+.UserDialog .forgotPassword > form .actions a {
+    position: absolute;
+    bottom: 66px;
+    right: 140px;
+    text-decoration: none;
+    font-size: 14px;
+    color: #ff6565;
 }
