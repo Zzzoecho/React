@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './UserDialog.css'
-import {signUp, signIn, sendPasswordResetEmail} from './leanCloud'
+import {signUp, signIn, sendPasswordResetEmail, TodoModel} from './leanCloud'
 import $ from 'jquery'
 import SignInOrSignUp from './SignInOrSignUp'
 import ForgotPasswordForm from './ForgotPasswordForm'
@@ -11,18 +11,19 @@ export default class UserDialog extends Component {
         this.state = {
             selectedTab: 'signInOrSignUp', //forgotPassword
             formData: {
+                email:'',
                 username: '',
-                password: '',
-                email: ''
+                password: ''
             }
         }
     }
 
     signUp(e){
         e.preventDefault()
-        let {username, password, email} = this.state.formData
+        let {email, username, password} = this.state.formData
         let success = (user)=>{
             this.props.onSignUp.call(null, user)
+            
             $('.App .Todo').show()
         }
         let error = (error)=>{
@@ -47,15 +48,15 @@ export default class UserDialog extends Component {
                     break
             }
         }
-        signUp(username, password,email, success, error)
+        signUp(email, username, password, success, error)
         
     }
     signIn(e){
          e.preventDefault()
         let {username, password} = this.state.formData
-        // console.log('signIn: ' + this.state.user.id)
         let success = (user)=>{
             this.props.onSignIn.call(null, user)
+            TodoModel.update()
             $('.App .Todo').show()
         }
         let error = (error)=>{

@@ -12,7 +12,7 @@ export default class ForgotPasswordForm extends Component {
                             onChange={this.props.onChange.bind(null, 'email')} />
                     </div>
                     <div className="row actions">
-                        <button tyoe="submit">Submit</button>
+                        <button type="submit">Submit</button>
                         <span>or</span>
                         <a href="#" onClick={this.props.onSignIn}>Return to Login</a>
                     </div>
