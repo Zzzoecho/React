@@ -29,8 +29,6 @@ export const TodoModel = {
     todo.set('status', status)
     todo.set('deleted', deleted)
 
-    //文档--单用户权限设置
-    //让这个todo只被当前用户看到
     let acl = new AV.ACL()
     acl.setPublicReadAccess(false)
     acl.setWriteAccess(AV.User.current(), true)

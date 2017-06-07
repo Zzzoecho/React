@@ -69,38 +69,33 @@ class App extends Component {
     $('.App .Todo').hide()
     let stateCopy = JSON.parse(JSON.stringify(this.state))
     stateCopy.user = {}
+    stateCopy.todoList = []
+    stateCopy.newTodo = ""
     this.setState(stateCopy)
   }
   onSignUpOrSignIn(user){
     let stateCopy = JSON.parse(JSON.stringify(this.state)) 
     stateCopy.user = user
     this.setState(stateCopy)
+    let users = getCurrentUser()
+    if (users) {
+      TodoModel.getByUser(users, (todos) => {
+        let stateCopy = JSON.parse(JSON.stringify(this.state))
+        stateCopy.todoList = todos
+        this.setState(stateCopy)
+      })
+    }
   }
-  componentDidMount(todo){
-    // this.fetchData.call(this)
+  componentWillMount(){
   }
-  // fetchData(){
-  //   let stateCopy = JSON.parse(JSON.stringify(this.state))
-  //   let user = AV.User.current()
-  //   if(user){
-  //     stateCopy['user'] = user.get('username')
-  //     let Todo = AV.Object.extend('Todo')
-  //     let todo = new Todo()
-  //     // var todo = AV.Object.createWithoutData('Todo')
-  //     let id = todo.id
-  //     stateCopy.todoList = todo.get('title')
-  //     this.setState(stateCopy) 
-  //   } else {
-  //   return
-  //  }
-  // }
+
   toggle(e, todo){
-    // let oldStatus = todo.status
-    // todo.status = todo.status === 'completed' ? '' : 'completed'
+    let oldStatus = todo.status
+    todo.status = todo.status === 'completed' ? '' : 'completed'
     TodoModel.update(todo, () => {
       this.setState(this.state)
     }, (error) => {
-      // todo.status = oldStatus
+      todo.status = oldStatus
       this.setState(this.state)
     })
      
@@ -134,9 +129,11 @@ class App extends Component {
       this.setState(this.state)
     })
   }
+
   showInput(){
     $('.inputWrapper').show()
   }
+
 }
 
 export default App;
