@@ -21,6 +21,9 @@ export default class UserDialog extends Component {
     signUp(e){
         e.preventDefault()
         let {email, username, password} = this.state.formData
+        if(!this.checkInfo.call(this, email, username, password)){
+            return
+        }
         let success = (user)=>{
             this.props.onSignUp.call(null, user)
             
@@ -73,6 +76,23 @@ export default class UserDialog extends Component {
             }
         }
         signIn(username, password, success, error)
+    }
+    checkInfo(email, username, password){
+        let regEmail = /\w+@/
+        let regUsername = /\w{3,}/
+        let regPassWord = /\w{6,}/
+
+        if(!regEmail.test(email)){
+            alert('邮箱必须包含@')
+            return false
+        }else if (!regUsername.test(username)){
+            alert('用户名不能少于三位')
+            return false
+        }else if(!regPassWord.test(password)){
+            alert('密码不能少于六位')
+            return false
+        }
+        return true
     }
     changeFormData(key, e){
         let stateCopy = JSON.parse(JSON.stringify(this.state))  //用JSON深拷贝
