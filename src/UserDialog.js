@@ -80,7 +80,7 @@ export default class UserDialog extends Component {
     checkInfo(email, username, password){
         let regEmail = /\w+@/
         let regUsername = /\w{3,}/
-        let regPassWord = /\w{6,}/
+        let regPassWord = /.{6,}/
 
         if(!regEmail.test(email)){
             alert('邮箱必须包含@')

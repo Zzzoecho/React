@@ -9,7 +9,7 @@
     align-items: center;
 }
 .UserDialog {
-    font-family: Calibri, 'Times New Roman';
+    font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
 }
 .UserDialog > .signInOrSignUp > nav {
     position: fixed;
@@ -135,6 +135,7 @@
     text-align: center;
     background-color: #f1f1f1;
     font-family: 'Microsoft Yahei';
+    letter-spacing: 4px;
     border-radius: 10px 10px 0 0;
 }
 .UserDialog .forgotPassword > form {

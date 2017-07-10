@@ -41,10 +41,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <link rel="stylesheet" href="https://at.alicdn.com/t/font_58snzvn4qatqehfr.css"/>
+        <link rel="stylesheet" href="https://at.alicdn.com/t/font_jnqt4v8nr5asjor.css"/>
         {this.state.user.id ? 
         <div className="Todo">
-          {this.state.user.id ? <button onClick={this.signOut.bind(this)}>Sign Out</button> : null}
+          {this.state.user.id ? <i className="iconfont icon-out" onClick={this.signOut.bind(this)}></i> : null}
           <p>{this.state.user.username||'我'}的待办</p>
           <div className="inputWrapper">
             <TodoInput content={this.state.newTodo} 
