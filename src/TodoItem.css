@@ -15,8 +15,12 @@
     color: #6e7783;
 }
 
-.TodoItem input[type='checkbox']{
+.TodoItem input[type=checkbox]{
     -webkit-appearance: none; 
+}
+.TodoItem input[type=checkbox]:checked + label {
+    background-image: url(http://oo7a0zmzl.bkt.clouddn.com/17-6-5/87148093.jpg);
+    background-position: -1px -1px;
 }
 .TodoItem label {
     display: inline-block;

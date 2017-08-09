@@ -13,6 +13,12 @@ function submit(props, e){
     if(e.key === 'Enter'){
         if(e.target.value.trim() !== ''){
             props.onSubmit(e)
+            $('.TodoItem input')
+            $('.TodoItem').each(function(index, element){
+                let idx = 'item'+index
+                $(this).find('input').attr('id',idx)
+                $(this).find('label').attr('for',idx)
+            })
             $('.inputWrapper').hide()
         }
     }

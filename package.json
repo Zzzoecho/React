@@ -9,6 +9,8 @@
     "react-dom": "^15.5.4"
   },
   "devDependencies": {
+    "jquery": "^3.2.1",
+    "leancloud-storage": "^3.0.4",
     "react-scripts": "1.0.6"
   },
   "scripts": {

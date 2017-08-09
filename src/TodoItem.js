@@ -7,10 +7,11 @@ export default class TodoItem extends Component {
         return (
         <div className="TodoItem">
             <link rel="stylesheet" href="https://at.alicdn.com/t/font_k75b3cufccakmx6r.css"/>
-            <label className="label" htmlFor="items" onClick={this.turn.bind(this)}></label>
+            
             <input type="checkbox" id="items" checked={this.props.todo.status === 'completed'}
                 onChange={this.toggle.bind(this)}/> 
-                <span className="title">{this.props.todo.title}</span>
+            <label className="label" htmlFor="items"></label>
+            <span className="title">{this.props.todo.title}</span>
             
             <i className="iconfont icon-del" onClick={this.delete.bind(this)}></i>
         </div>
@@ -21,11 +22,5 @@ export default class TodoItem extends Component {
     }
     delete(e){
         this.props.onDelete(e, this.props.todo)
-    }
-    turn(){
-        $('.TodoItem label').css({
-            'background': "url(http://oo7a0zmzl.bkt.clouddn.com/17-6-5/87148093.jpg)",
-            'background-position':'-1px -1px'
-        })
     }
 }

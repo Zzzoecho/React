@@ -38,7 +38,11 @@ class App extends Component {
         </li>
       )
     })
-
+    $('.TodoItem').each(function(index, element){
+        let idx = 'item'+index
+        $(this).find('input').attr('id',idx)
+        $(this).find('label').attr('for',idx)
+    })
     return (
       <div className="App">
         <link rel="stylesheet" href="https://at.alicdn.com/t/font_jnqt4v8nr5asjor.css"/>
